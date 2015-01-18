@@ -1,6 +1,6 @@
 ##git-petty-thing
 
-*  git rebase
+*  ####git rebase
 >背景
 提交代码后，本次commit和服务器中的某些commit不在同一时间轴上，即：本次commit需要参入到服务器中的某些commit之间，这样会造成代码冲突，所以要做rebase
 方法：现在的分支为<code>feature/mix</code>,在本分至上刚提交过一些commit，此时
@@ -20,14 +20,60 @@
     <pre><code>git push</code></pre>
 
 
-* git 修改commit
->
+* ####git 合并数次commit
+>*	1.<code>git log</code>查看你需要合并的几条commit的<code>hax_num</code>
+	
+``` 
+    commit 5db46f...
+	Author: me
+	Date:   Sun Jan 18 14:10:46 2015 +0800
 
-1. 可以记住某个commit号
-2. git rebase -i commit号
-3. 会显示一个整理提交的界面，有很多参数，e。p。等等
-4.将前面的参数改为e。则wq保存后，系统会自动让你重新修改commit内容
-5.修改完成后，再git push for-*
+	    fix the github-markdown layouts
+
+	commit cdedf...
+	Author: caiya <onlylae@sina.com>
+	Date:   Sun Jan 18 14:02:10 2015 +0800
+
+	    sort it
+```
+
+>*	2.<code>git rebase -i hax_num</code>,此处hax_num是属于几条commit中最早的那一条commit的
+
+```
+	pick d0ccecd remove ##
+	pick b677a3c add reset methods
+	pick ba1ce29 remove ##
+	pick cdedf66 sort it
+	pick 5db46fd fix the github-markdown layouts
+
+	#  p, pick = use commit
+	#  r, reword = use commit, but edit the commit message
+	#  e, edit = use commit, but stop for amending
+	#  s, squash = use commit, but meld into previous commit
+	#  f, fixup = like "squash", but discard this commit's log message
+	#  x, exec = run command (the rest of the line) using shell
+```
+>*  3.将第一条commit的<code>pick</code>保留，其他要合并的commit的<code>pick</code>改为<code>squash</code>，然后退出
+如果出现冲突，就solve conflict，
+再次查看<code>git log</code>发现
+
+	commit dad35...
+	Author: caiya <onlylae@sina.com>
+	Date:   Sun Jan 18 13:29:37 2015 +0800
+
+	    remove ##
+	    
+	    add reset methods
+	    
+	    remove ##
+	    
+	    sort it
+	    
+	    fix the github-markdown layouts
+
+>*  4.<code>git push</code>
+
+
 
 *  git如何删除远程仓库的某次错误提交
 >* git reset –mixed
