@@ -23,7 +23,7 @@
 * ####git 合并数次commit
 >*	1.<code>git log</code>查看你需要合并的几条commit的<code>hax_num</code>
 	
-``` 
+```
     commit 5db46f...
 	Author: me
 	Date:   Sun Jan 18 14:10:46 2015 +0800
@@ -57,6 +57,7 @@
 如果出现冲突，就solve conflict，
 再次查看<code>git log</code>发现
 
+```
 	commit dad35...
 	Author: caiya <onlylae@sina.com>
 	Date:   Sun Jan 18 13:29:37 2015 +0800
@@ -70,6 +71,7 @@
 	    sort it
 	    
 	    fix the github-markdown layouts
+```
 
 >*  4.<code>git push</code>
 
@@ -81,12 +83,37 @@
 >* 5.<code>git rebase --continue</code>
 >* 6.<code>git log</code>查看是否修改生效（可选）
 
+* ####删除分支
+>删除本地分支
+><code>git branch -d feature/xxx</code>
+>** **
+>删除远程分支
+><code>git branch -d feature/xxx</code>先删除本地分支
+><code>git push origin :feature/xxx</code>再将该空分支推送到远程，即可删除
 
+* ####commit
+>* <code>git add .</code>
+>* <code>git commit -m 'merge feature into master'</code>
+>* <code>git push</code>
+
+* ####git merge 合并feature/xxx分支到master上
+>* 1.<code>git checkout master</code>
+>* 2.<code>git merge feature/xxx</code>
+>* 3.<code>commit</code>
+>* 4.删除<code>feature/xxx</code>分支
+
+
+* ####git stash
+>* 1.<code>git stash</code>暂存修改内容
+>* 2.<code>git stash pop</code>从git栈中读取最近一次的stash内容，并从stash list中移除
+>* 3.<code>git stash list</code>显示git栈中所有stash版本
+>* 4.<code>git stash clear</code>清除git栈
+>* 5.<code>git stash pop stash@{1}</code> 与 <code>git stash apply stash@{1}</code> 后者不会从stash list中移除stash@{1}
 
 * ####git如何删除远程仓库的某次错误提交
->* git reset –mixed
+>* <code>git reset –mixed</code>
 >此为默认方式，不带任何参数的git reset，就是这种方式，它回退到某个版本，只保留源码，回退commit和stage信息
->* git reset –soft
+>* <code>git reset –soft</code>
 >回退到某个版本， 只回退了commit的信息，不会恢复stage（如果还要提交，直接commit即可
->* git reset –hard
+>* <code>git reset –hard</code>
 >彻底回退到某个版本， 本地的源码也会变为上一个版本的内容
