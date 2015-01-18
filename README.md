@@ -1,21 +1,23 @@
 ##git-petty-thing
 
-*  git rebase 
+*  git rebase
 >背景
 提交代码后，本次commit和服务器中的某些commit不在同一时间轴上，即：本次commit需要参入到服务器中的某些commit之间，这样会造成代码冲突，所以要做rebase
 方法：现在的分支为<code>feature/mix</code>,在本分至上刚提交过一些commit，此时
 >*	1.新建一个分支，并且代码和服务器中代码同步
-    <code>git checkout origin/master -b temp</code>
-  	<code>git push</code>
->* 2.回到<code>feature/mix</code>分支
-	<code>git checkout feature/mix</code>
+    <pre><code>git checkout origin/master -b temp</code></pre>
+    <pre><code>git push</code></pre>
+>* 2.回到feature/mix分支
+	<pre><code>git checkout feature/mix</code></pre>
 >* 3.开始rebase操作
-	<code>git rebase temp</code>
->* 4.solve conflict 解决冲突后
-	<code>git add .</code> //不需要<code>git commit</code>
-    <code>git rebase --continue</code>
+    <pre><code>git rebase temp</code></pre>
+>* 4.solve conflict 解决冲突后,
+    <pre><code>git add .</code></pre>
+    <pre><code>git rebase --continue</code></pre>
+    <pre>注意，在以上<code>git add .</code>之后是不需要<code>git commit</code>的</pre>
 >* 5.因为提交有多个，所以会出现多次solve conflict操作，直至没有冲突
->* 6.此时重新提交代码，git push
+>* 6.此时重新提交代码，
+    <pre><code>git push</code></pre>
 
 
 * git 修改commit
