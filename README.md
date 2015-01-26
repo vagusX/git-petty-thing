@@ -31,7 +31,7 @@
 	    fix the github-markdown layouts
 
 	commit cdedf...
-	Author: caiya <onlylae@sina.com>
+	Author: me 
 	Date:   Sun Jan 18 14:02:10 2015 +0800
 
 	    sort it
@@ -59,7 +59,7 @@
 
 ```
 	commit dad35...
-	Author: caiya <onlylae@sina.com>
+	Author: me 
 	Date:   Sun Jan 18 13:29:37 2015 +0800
 
 	    remove ##
